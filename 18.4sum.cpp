@@ -8,7 +8,7 @@ public:
             for(int j = i + 1; j < nums.size(); ++j){
                 mp[nums[i]+nums[j]].push_back(make_pair(i, j));
             }
-        }//1+2 2+3 1+4...
+        }//1+2 2+3 1+4... 2找2
         
         vector<vector<int>> res;//i,j + k,l
         
