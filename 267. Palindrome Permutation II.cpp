@@ -6,7 +6,7 @@ public:
         for (char c : s) counts[c]++;
         int odd = 0; char mid; string half;
         for (auto p : counts) {
-            if (p.second & 1) {
+            if (p.second & 1) {//?
                 odd++, mid = p.first;//奇数
                 if (odd > 1) return palindromes;
             }
