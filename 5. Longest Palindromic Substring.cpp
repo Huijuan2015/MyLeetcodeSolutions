@@ -6,33 +6,97 @@ P[ i, i ] ← true
 P[ i, i+1 ] ← ( Si = Si+1 
 
 
-string longestPalindromeDP(string s) {
-  int n = s.length();
-  int longestBegin = 0;
-  int maxLen = 1;
-  bool table[1000][1000] = {false};
-  for (int i = 0; i < n; i++) {
-    table[i][i] = true;
-  }
-  for (int i = 0; i < n-1; i++) {
-    if (s[i] == s[i+1]) {
-      table[i][i+1] = true;
-      longestBegin = i;
-      maxLen = 2;
+string longestPalindrome(string s) {
+        int start = 0, len = 1, n = s.length();
+        bool cur[1000] = {false};
+        bool pre;
+        cur[0] = true;
+        for (int j = 1; j < n; j++) {
+            cur[j] = true;
+            pre = cur[j - 1];
+            cur[j - 1] = s[j - 1] == s[j];
+            if (cur[j - 1] && len < 2) {
+                start = j - 1;
+                len = 2;
+            }
+            for (int i = j - 2; i >= 0; i--) {
+                bool temp = cur[i];
+                cur[i] = pre && s[i] == s[j];
+                if (cur[i] && j - i + 1 > len) {
+                    start = i;
+                    len = j - i + 1;
+                }
+                pre = temp;
+            }
+        }
+        return s.substr(start, len);
     }
-  }
-  for (int len = 3; len <= n; len++) {
-    for (int i = 0; i < n-len+1; i++) {
-      int j = i+len-1;
-      if (s[i] == s[j] && table[i+1][j-1]) {
-        table[i][j] = true;
-        longestBegin = i;
-        maxLen = len;
-      }
-    }
-  }
-  return s.substr(longestBegin, maxLen);
-}
 
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int len = s.length();
+        int max = 1;
+        int s_start = 0;
+        int s_end = 0;
+        bool flag[len][len];
+        //f[i][i]长度为1的回文串
+        for(int i = 0; i < len; ++i){
+            for(int j = 0; j < len; ++j){
+                if(i >= j){
+                    flag[i][j] = true;
+                }else flag[i][j] = false;
+            }
+        }
+      
+        for(int j = 1; j < len; ++j){
+            for(int i = 0; i < j; ++i){
+                if(s[i] == s[j]){
+                    flag[i][j] = flag[i+1][j-1];
+                    if(flag[i][j] == true && j-i+1 > max){
+                        max = j-i+1;
+                        s_start = i;
+                        s_end = j;
+                    }
+                }else flag[i][j] = false;
+            }
+        }
+        return s.substr(s_start, max);
+    }
+};
+
+从某位扩展，更优化？
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int len = s.length();
+        if(len < 2){
+            return s;
+        }
+        
+        for(int i = 0; i < len-1; ++i){
+            extendPalindrome(s, i, i);
+            extendPalindrome(s, i, i+1);
+        }
+        
+        return s.substr(start, maxLen);
+    }
+    
+private:
+    int start, maxLen;
+    void extendPalindrome(string s, int j, int k){
+        while(j >= 0 && k < s.length() && s[j] == s[k]){
+            j--;
+            k++;
+        }
+        if(maxLen < k-j-1){
+            start = j+1;
+            maxLen = k-j-1;
+        }
+    }
+};
 
 Manacher算法？
+http://www.cnblogs.com/bitzhuwei/p/Longest-Palindromic-Substring-Part-II.html

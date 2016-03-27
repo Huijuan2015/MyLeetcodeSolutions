@@ -1,3 +1,5 @@
+自己写cmp的原因：pair前后元素排序方式不一样
+
 If two words has the same frequency, 
 the one with lower alphabetical order come first
 
@@ -15,11 +17,12 @@ public:
         }
     };
     vector<string> topKFrequentWords(vector<string>& words, int k) {
-        unordered_map<string, int> mymap;
+        unordered_map<string, int> mymap;//string and freq
         for(auto const& word : words) {
             mymap[word]++;
         }
         vector<string> result;
+        //push all to queue
         priority_queue<pair<int, string>, vector<pair<int, string>>, cmp > que;
         for(auto const& v : mymap) {
             que.push(make_pair(v.second, v.first));
