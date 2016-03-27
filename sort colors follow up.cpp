@@ -56,7 +56,9 @@ class Solution {
 };
 
 Solution 2:
-
+排K次， 每次快排把第I种排好，放在数组后部。
+返回的坐标是后部排好的数组的前一个坐标，
+然后作为r 继续进行partition
 klgn
 class Solution{
 public:
@@ -88,47 +90,38 @@ private:
 };
 
 
-Method 1: Each time sort the array into three parts:
-[all min] [all unsorted others] [all max], 
-then update min and max and sort the [all unsorted others] 
-with the same method.
-复杂度是O(n^2): T(n) = T(n-2) + n
-class Solution {
+sort priority
+
+class Solution{
+public:
     /**
      * @param colors: A list of integer
      * @param k: An integer
      * @return: nothing
-     */
-    public void sortColors2(int[] colors, int k) {
-        int pl = 0;
-        int pr = colors.length - 1;
-        int i = 0;
-        int min = 1, max = k;
-        while (min < max) {
-            while (i <= pr) {
-                if (colors[i] == min) {
-                    swap(colors, pl, i);
-                    i++;
-                    pl++;
-                } else if (colors[i] == max) {
-                    swap(colors, pr, i);
-                    pr--;
-                } else {
-                    i++;
-                }
-            }
-            i = pl;
-            min++;
-            max--;
-        }
+     */    
+    void sortColors2(vector<int> &colors, int k) {
+        // write your code here
+        auto r =  colors.size()-1;
+        for(auto i=0;i<k-1;++i)
+            l = partition(colors, 0, colors.size()-1, i);
     }
     
-    private void swap(int[] colors, int i, int j) {
-        int temp = colors[i];
-        colors[i] = colors[j];
-        colors[j] = temp;
+private:
+    int partition(vector<int> &nums, int l, int r, int pivot)
+    {
+        int i=l, j=r;
+        while(i<=j)
+        {
+            while(i<r && nums[i] >= pivot) ++i;
+            while(j>0 && nums[j] < pivot) --j;
+            if(i<=j) swap(nums[i++], nums[j--]);
+        }
+        
+        return i+1;
     }
 };
+
+
 
 inplace，并且O(N)时间复杂度的算法。
 // 1. 从左扫描到右边，遇到一个数字，先找到对应的bucket.比如
@@ -183,36 +176,3 @@ public:
         } 
     }
 };
-
-
-sort priority
-
-class Solution{
-public:
-    /**
-     * @param colors: A list of integer
-     * @param k: An integer
-     * @return: nothing
-     */    
-    void sortColors2(vector<int> &colors, int k) {
-        // write your code here
-        auto l =  0;
-        for(auto i=0;i<k-1;++i)
-            r = partition(colors, 0, colors.size()-1, i+1);
-    }
-    
-private:
-    int partition(vector<int> &nums, int l, int r, int pivot)
-    {
-        int i=l, j=r;
-        while(i<=j)
-        {
-            while(i<r && nums[i] <= pivot) ++i;
-            while(j>0 && nums[j] > pivot) --j;
-            if(i<=j) swap(nums[i++], nums[j--]);
-        }
-        
-        return i-1;
-    }
-};
-
