@@ -5,34 +5,6 @@ P[ i, j ] ← ( P[ i+1, j-1 ] and Si = Sj )
 P[ i, i ] ← true
 P[ i, i+1 ] ← ( Si = Si+1 
 
-
-string longestPalindrome(string s) {
-        int start = 0, len = 1, n = s.length();
-        bool cur[1000] = {false};
-        bool pre;
-        cur[0] = true;
-        for (int j = 1; j < n; j++) {
-            cur[j] = true;
-            pre = cur[j - 1];
-            cur[j - 1] = s[j - 1] == s[j];
-            if (cur[j - 1] && len < 2) {
-                start = j - 1;
-                len = 2;
-            }
-            for (int i = j - 2; i >= 0; i--) {
-                bool temp = cur[i];
-                cur[i] = pre && s[i] == s[j];
-                if (cur[i] && j - i + 1 > len) {
-                    start = i;
-                    len = j - i + 1;
-                }
-                pre = temp;
-            }
-        }
-        return s.substr(start, len);
-    }
-
-
 class Solution {
 public:
     string longestPalindrome(string s) {
