@@ -36,6 +36,10 @@ public:
     }
 };
 
+
+
+
+stack:不取
 public class Solution {
  public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
  Stack<TreeNode> stk = new Stack<TreeNode>();
