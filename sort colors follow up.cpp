@@ -176,3 +176,35 @@ public:
         } 
     }
 };
+
+
+
+
+
+class ColorGame{
+    
+public:
+    ColorGame(){}
+    vector<int> sortColor(vector<int>& colors){
+//012排在前面
+        int l = 0;
+        int r = colors.size()-1;
+        for(int i = 0; i < 3; ++i){
+            r = partition(colors, 0, colore.size(), i+1);
+        }
+        return colors;
+    }
+
+    int partition(vector<int>& colors, int i, int j, int pivot){
+        int l = i;
+        int r = j;
+        while(l <=r){
+            while(colors[l] <= pivot) l++;
+            while(colors[r] > pivot) r--;
+            if(l<=r && colors[l] > colors[r]) swap(colors[l], colors[r]);
+        }
+        return j+1;
+    }
+
+};
+
