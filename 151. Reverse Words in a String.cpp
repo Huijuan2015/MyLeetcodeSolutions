@@ -5,7 +5,7 @@ void reverseWords(string& s){
 		while(i >= 0 && s[i] == ' '){//解决多个字符的情况  单词与单词之间有多个空格字
 			i--;
 		}
-		if(i < 0) break;//解决首部多个字符剔除完毕后，i<0 ，即后续没有字符，需跳出循环。example:in : "   							//i"   out:"i".
+		if(i < 0) break;//解决首部多个字符剔除完毕后，i<0 ，即后续没有字符，需跳出循环。   							//i"   out:"i".
 		if(ss.length() != 0){//加空格
 			ss.push_back(' ');
 		}
@@ -15,7 +15,7 @@ void reverseWords(string& s){
 		}
 
 		reverse(temp.begin(), temp.end());//反转单词再push进结果
-		ss.append(temp);
+		ss.append(temp);//apend string, push_back char
 	}
 	s = ss;
 	
