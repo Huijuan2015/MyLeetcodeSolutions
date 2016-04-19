@@ -4,15 +4,15 @@ using namespace std;
 class Node{
     public:
     	int data;
-	Node * next;
-	Node(int x){
-		data = x;
-		next = NULL;
-		}
-	Node(int x, Node * y){
-		data = x; 
-		next = y;
-		}
+		Node * next;
+		Node(int x){
+			data = x;
+			next = NULL;
+			}
+		Node(int x, Node * y){
+			data = x; 
+			next = y;
+			}
     };
 
 
