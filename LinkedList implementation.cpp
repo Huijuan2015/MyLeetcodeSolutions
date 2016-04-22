@@ -12,7 +12,7 @@ class Node{
 		Node(int x, Node * y){
 			data = x; 
 			next = y;
-			}
+			}//Node(int x, Node *y) : data(x), next(y){}
     };
 
 
