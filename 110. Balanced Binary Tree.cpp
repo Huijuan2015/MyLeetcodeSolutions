@@ -21,6 +21,6 @@ public:
     int depth(TreeNode* root){
         if(!root) return 0;
         
-        return max(depth(root->left), depth(root->right))+1;
+        return max(depth(root->left), depth(root->right))+1;//记得加1
     }
 };
