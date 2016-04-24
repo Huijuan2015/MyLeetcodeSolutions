@@ -12,5 +12,6 @@ public:
         ListNode* next = node->next;
         node->val = next->val;
         node->next = next->next;
+        //这里本来应该把原Node->next删除
     }
 };

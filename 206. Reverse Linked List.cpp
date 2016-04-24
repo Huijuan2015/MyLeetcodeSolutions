@@ -18,7 +18,9 @@ public:
         }
         return pre;
     }
+
     
+    //2.
     if(!head || !(head->next)) return head;
     ListNode* node = reverseList(head->next);
     head->next->next = head;
