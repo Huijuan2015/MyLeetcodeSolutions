@@ -3,9 +3,9 @@ public ListNode insertionSortList(ListNode head) {
             return head;
         }
 
-        ListNode helper = new ListNode(0); //new starter of the sorted list
+        ListNode dummy = new ListNode(0); //new starter of the sorted list
         ListNode cur = head; //the node will be inserted
-        ListNode pre = helper; //insert node between pre and pre.next
+        ListNode pre = dummy; //insert node between pre and pre.next
         ListNode next = null; //the next node will be inserted
         //not the end of input list
         while( cur != null ){
@@ -17,9 +17,9 @@ public ListNode insertionSortList(ListNode head) {
             //insert between pre and pre.next
             cur.next = pre.next;
             pre.next = cur;
-            pre = helper;
+            pre = dummy;
             cur = next;
         }
 
-        return helper.next;
+        return dummy.next;
     }
