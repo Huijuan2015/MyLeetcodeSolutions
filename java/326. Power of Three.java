@@ -23,3 +23,6 @@ public class Solution {
 
 
 return n>0 && Math.pow(3, (int)(Math.log(0x7fffffff)/Math.log(3)))%n==0;
+
+
+http://www.cnblogs.com/EdwardLiu/p/5115390.html
