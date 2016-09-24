@@ -26,6 +26,8 @@ public:
     }
 };
 
+http://blog.csdn.net/qq575787460/article/details/41206601
+
 /*
 1.Find the largest index k such that nums[k] < nums[k + 1]. 
 If no such index exists, the permutation is sorted in descending order, 
