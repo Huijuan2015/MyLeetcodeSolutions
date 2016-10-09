@@ -13,6 +13,7 @@ public:
         int s_start = 0;
         int s_end = 0;
         bool flag[len][len];
+        //
         //f[i][i]长度为1的回文串
         for(int i = 0; i < len; ++i){
             for(int j = 0; j < len; ++j){
