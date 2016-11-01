@@ -25,3 +25,20 @@ public:
         
     }
 };
+
+
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int nextNotZeroPos = 0;
+        int curPos = 0; 
+        while( nextNotZeroPos < nums.size()) {
+            if (nums[nextNotZeroPos] != 0) {
+                swap(nums[nextNotZeroPos], nums[curPos++]);
+            }
+            
+            nextNotZeroPos++;
+        }
+    }
+};

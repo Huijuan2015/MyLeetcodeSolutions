@@ -20,6 +20,7 @@ public:
 };
 
 
+
 // Your ValidWordAbbr object will be instantiated and called as such:
 // ValidWordAbbr vwa(dictionary);
 // vwa.isUnique("hello");

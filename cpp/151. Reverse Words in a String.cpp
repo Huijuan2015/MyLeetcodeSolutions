@@ -21,6 +21,22 @@ void reverseWords(string& s){
 	
 }
 
+class Solution {
+public:
+    void reverseWords(string &s) {
+        istringstream in(s);
+
+        s = "";
+        string word;
+        while(in >> word){
+            s = word + " " +s;
+        }
+        if(!s.empty()){
+            s.pop_back();
+        }
+    }
+};
+
 
 void reverseWords(string& s){
 	

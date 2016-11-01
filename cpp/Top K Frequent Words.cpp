@@ -65,3 +65,13 @@ struct cmp(){
         return a.first < b.first;
     }
 };
+
+map 按key 排序
+struct comLen{
+   bool operator(const string &lhs, const string &rhs)
+   {return lhs.length()<rhs.length();}
+}
+map<string,int,comLen> LenLessMap;
+
+
+

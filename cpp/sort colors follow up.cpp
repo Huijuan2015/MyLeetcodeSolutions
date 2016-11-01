@@ -73,7 +73,7 @@ public:
         for(auto i=0;i<k-1;++i)
             r = partition(colors, 0, r, k-i-1);
     }
-    
+    //最大值放最后
 private:
     int partition(vector<int> &nums, int l, int r, int pivot)
     {
