@@ -64,6 +64,7 @@ public:
         for(int i = start; i < nums.size(); ++i){
             swap(nums[i], nums[start]);//组合求法
             Helper(nums, start+1, res);
+            swap(nums[i], nums[start]);
         }
     
     }
