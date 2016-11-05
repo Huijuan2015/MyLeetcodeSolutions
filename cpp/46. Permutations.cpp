@@ -68,3 +68,33 @@ public:
     
     }
 };
+//solution 3 backtracking
+class Solution {
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> cur;
+        vector<int> visited(nums.size(), 0);
+        
+        dfs(nums, 0, visited, cur, res);
+        return res;
+    }
+    
+    void dfs(vector<int> nums, int cur_len, vector<int>& cur, vector<int>& visited, vector<vector<int>>& res){
+        if(cur_len == nums.size()) {
+            res.push_back(cur);
+            return;
+        }
+        
+            for(int i = 0; i < nums.size(); ++i){
+                if(visited[i] == 0){
+                    visited[i] = 1;
+                    cur.push_back(nums[i]);
+                    dfs(nums,cur_len+1, cur, visited, res);
+                    cur.pop_back();
+                    visited[i] = 0;
+                }
+            }
+        
+    }
+};
